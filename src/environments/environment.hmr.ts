@@ -2,15 +2,14 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const baseURL: string = 'http://localhost:4200/assets/my-test-data/';
-// https://www.easy-mock.com/mock/5a4c9b6f81bb592653f71011/example/score
+
 export const environment = {
   production: false,
-  hmr: false,
-  envName: 'dev',
+  hmr: true,
+  envName: 'hmr',
   apiURL: {
     login: baseURL + 'loggin.json',
     bars: baseURL + 'bar-chart.json',
-    lines: baseURL + 'line-chart.json',
     categories: baseURL + 'categories.json',
     customers: baseURL + 'customers.json',
     inboundDetails: baseURL + 'inbound-details.json',

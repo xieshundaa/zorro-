@@ -1,0 +1,48 @@
+<div nz-row nzGutter="16">
+  <div nz-col class="gutter-row" nzSpan="6">
+    <div class="gutter-box top-rect-blue">
+      <p>65535 PV/Day</p>
+    </div>
+  </div>
+  <div nz-col class="gutter-row" nzSpan="6">
+    <div class="gutter-box top-rect-green">
+      <p>123,456K</p>
+    </div>
+  </div>
+  <div nz-col class="gutter-row" nzSpan="6">
+    <div class="gutter-box top-rect-orange">
+      <p>$123,456</p>
+    </div>
+  </div>
+  <div nz-col class="gutter-row" nzSpan="6">
+    <div class="gutter-box top-rect-pink">
+      <p>$123,456</p>
+    </div>
+  </div>
+</div>
+<div nz-row nzGutter="16" style="margin-top: 25px;">
+  <div nz-col nzSpan="12">
+    <nz-card nzTitle="折线图" nzBordered="true" nzHoverable=""true>
+      <div>
+        <v-chart [forceFit]="lineChart.forceFit" [height]="lineChart.height" [data]="lineChart.data" [scale]="lineChart.scale">
+          <v-tooltip></v-tooltip>
+          <v-axis></v-axis>
+          <v-line position="year*value"></v-line>
+          <v-point position="year*value" shape="lineChart.circle"></v-point>
+        </v-chart>
+      </div>
+    </nz-card>
+  </div>
+  <div nz-col nzSpan="12">
+    <nz-card nzTitle="柱状图" nzBordered="true" nzHoverable="true">
+      <div>
+        <v-chart [forceFit]="barChart.forceFit" [height]="barChart.height" [data]="barChart.data">
+          <v-tooltip></v-tooltip>
+          <v-axis></v-axis>
+          <v-legend></v-legend>
+          <v-bar position="月份*月均降雨量" color="name" [adjust]="barChart.adjust"></v-bar>
+        </v-chart>
+      </div>
+    </nz-card>
+  </div>
+</div>

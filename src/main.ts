@@ -1,12 +1,24 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { environment } from './environments/environment';
+import { hmrBootstrap } from './hmr';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+// (<any>window).environment = environment;
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
+console.log(environment); // 打印看环境文件是否加载正确
+
+if (environment.hmr) {
+  if (module['hot']) {
+    hmrBootstrap(module, bootstrap);
+  } else {
+    console.error('Ammm.. HMR is not enabled for webpack');
+  }
+} else {
+  bootstrap();
+}

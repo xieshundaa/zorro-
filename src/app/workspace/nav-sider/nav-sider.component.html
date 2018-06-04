@@ -1,0 +1,23 @@
+<div class="logo">
+</div>
+<ul nz-menu [nzTheme]="MenuTheme" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+  <!--无子菜单-->
+  <li nz-menu-item [nzSelected]="item.selected" [routerLink]="item.link" *ngFor="let item of newMenus.noChildren">
+    <span>
+      <i class="anticon {{item.icon}}"></i>
+      <span class="nav-text">{{item.name}}</span>
+    </span>
+  </li>
+  <!--有子菜单-->
+  <li nz-submenu *ngFor="let item of newMenus.hasChildren; let i = index;" [(nzOpen)]="openMap[i].sub" (nzOpenChange)="openHandler(openMap[i], i)">
+    <span title>
+      <i class="anticon {{item.icon}}"></i>
+      <span class="nav-text">{{item.name}}</span>
+    </span>
+    <ul>
+      <li nz-menu-item *ngFor="let child of item.children">{{child.name}}</li>
+    </ul>
+  </li>
+</ul>
+<!--routerLinkActive="ant-menu-item-selected"-->
+<!--[nzSelected]="child.selected" -->
